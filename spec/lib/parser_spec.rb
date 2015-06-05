@@ -43,7 +43,7 @@ describe "Parser" do
 
   it "parses a PLACE instruction" do
     instruction = parser.parse "PLACE 1,2,EAST"
-    expect(instruction).to eq({instruction: :place, args: ["1","2","EAST"]})
+    expect(instruction).to eq({instruction: :place, x: "1", y: "2", direction: "EAST"})
   end    
 
 end

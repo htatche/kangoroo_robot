@@ -3,11 +3,16 @@ class Parser
   attr_accessor :regexp
 
   def initialize
-    @regexp = /(MOVE|LEFT|RIGHT|REPORT|(PLACE\s+([1-5]),([1-5]),(NORTH|EAST|SOUTH|WEST)))/
+    @regexp = %r{ ^(?<instruction>MOVE|LEFT|RIGHT|REPORT|
+                  (PLACE\s+
+                  (?<x>[1-5]),
+                  (?<y>[1-5]),
+                  (?<direction>NORTH|EAST|SOUTH|WEST)))
+              }x
   end  
 
   def ensure_matches(matches)
-    if matches && matches.captures
+    if matches && matches[:instruction]
       true
     else
       puts "Sorry I didn't understand your instruction"
@@ -22,9 +27,7 @@ class Parser
 
     return false unless ensure_matches(matches)
 
-    instruction = matches[1]
-
-    case instruction 
+    case matches[:instruction]
       when "MOVE"
         {instruction: :move}
       when "LEFT"
@@ -34,8 +37,7 @@ class Parser
       when "REPORT"
         {instruction: :report}
       when /PLACE.*/
-        x, y, direction = matches[3], matches[4], matches[5]
-        {instruction: :place, args: [x,y,direction]}
+        {instruction: :place, x: matches[:x], y: matches[:y], direction: matches[:direction]}
       end    
 
   end
