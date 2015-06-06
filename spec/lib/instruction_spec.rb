@@ -1,16 +1,13 @@
-# require "spec_helper"
-# require "instruction"
+require "spec_helper"
+require "instruction"
 
-# describe "Instruction" do
+describe "Instruction" do
 
-#   let(:instruction) { Instruction.new({instruction: :place}) }
+  let(:instruction) { Instruction.new }
+  let(:table) { Table.new(5,5) }
 
-#   it "has a command with an instruction" do
-#     expect(instruction.command[:instruction]).to eq(:place)
-#   end
+  it "knows if a position is off the limits of a table" do
+    expect(instruction.is_off_limits?(10,20, table)).to be true
+  end   
 
-#   # it "will load the actual instruction" do
-#   #   expect(instruction.load).to be true
-#   # end
-
-# end
+end

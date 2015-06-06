@@ -14,7 +14,7 @@ describe "Left" do
       place = Instruction::Place.new(2,2,"NORTH")
 
       place.execute(position, direction, table)
-      left.execute(position, direction)
+      left.execute(position, direction, table)
 
       expect(direction.cardinal_point).to eq("WEST")
     end  
@@ -22,7 +22,7 @@ describe "Left" do
     it "does not executes the instruction if position is not settled" do
       place = Instruction::Place.new(2,2,"NORTH")
 
-      expect(left.execute(position, direction)).to be false
+      expect(left.execute(position, direction, table)).to be false
     end 
 
   end

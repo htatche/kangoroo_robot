@@ -3,6 +3,7 @@ require_relative "./instructions/place"
 require_relative "./instructions/move"
 require_relative "./instructions/left"
 require_relative "./instructions/right"
+require_relative "./instructions/report"
 
 class Parser
 
@@ -11,8 +12,8 @@ class Parser
   def initialize
     @regexp = %r{ ^(?<command>MOVE|LEFT|RIGHT|REPORT|
                   (PLACE\s+
-                  (?<x>[1-5]),
-                  (?<y>[1-5]),
+                  (?<x>\d),
+                  (?<y>\d),
                   (?<direction>NORTH|EAST|SOUTH|WEST)))
               }x
 
@@ -39,7 +40,7 @@ class Parser
       when "RIGHT"
         Instruction::Right.new
       when "REPORT"
-        # Instruction::Report.new
+        Instruction::Report.new
       when /PLACE.*/
         Instruction::Place.new(@matches[:x], @matches[:y], @matches[:direction])
     end    

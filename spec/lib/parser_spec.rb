@@ -33,7 +33,9 @@ describe "Parser" do
   end    
 
   it "parses a REPORT instruction" do
-    pending
+    parser.validate "REPORT"
+    instruction = parser.load_instruction
+    expect(instruction.is_a?(Instruction::Report)).to be true
   end
 
   it "validates a PLACE command" do

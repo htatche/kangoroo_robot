@@ -18,7 +18,7 @@ class Instruction::Left < Instruction
     end
   end
 
-  def execute(position, direction)
+  def execute(position, direction, table)
 
     if !position.settled
       # Reporter::say(:is_not_placed)
