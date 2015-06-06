@@ -24,11 +24,5 @@ describe "Position" do
   it "gives the next position" do
     pending
   end
-
-  it "knows if a position is off the limits of a table" do
-    table = Table.new(5,5)
-    position = Position.new(5,15)
-
-    expect(position.is_off_limits?(table)).to be true
-  end    
+ 
 end

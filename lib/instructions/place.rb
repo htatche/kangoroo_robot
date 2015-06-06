@@ -10,10 +10,18 @@ class Instruction::Place < Instruction
     @direction = direction
   end
 
-  def execute
-    # self.position = new Position(x,y)
-    puts "Execute instruction Place"
-    return true
+  def is_off_limits?(table)
+    x > table.xlimit || y > table.ylimit
+  end
+
+  def execute(position, direction, table)
+    return false if is_off_limits?(table)
+
+    position.x = x
+    position.y = y 
+    direction.cardinal_point = direction
+
+    true
   end
 
 end
