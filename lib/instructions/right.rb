@@ -1,4 +1,4 @@
-require "instruction"
+require_relative "../instruction"
 
 class Instruction::Right < Instruction 
 

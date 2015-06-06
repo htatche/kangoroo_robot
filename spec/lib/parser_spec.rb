@@ -14,25 +14,27 @@ describe "Parser" do
     expect(instruction).to be false
   end  
 
-  # it "parses a MOVE instruction" do
-  #   instruction = parser.parse "MOVE"
-  #   expect(instruction).to eq({instruction: :move})
-  # end
+  it "parses a MOVE instruction" do
+    parser.validate "MOVE"
+    instruction = parser.load_instruction
+    expect(instruction.is_a?(Instruction::Move)).to be true
+  end
 
-  # it "parses a LEFT instruction" do
-  #   instruction = parser.parse "LEFT"
-  #   expect(instruction).to eq({instruction: :left})
-  # end
+  it "parses a LEFT instruction" do
+    parser.validate "LEFT"
+    instruction = parser.load_instruction
+    expect(instruction.is_a?(Instruction::Left)).to be true
+  end
 
-  # it "parses a RIGHT instruction" do
-  #   instruction = parser.parse "RIGHT"
-  #   expect(instruction).to eq({instruction: :right})
-  # end    
+  it "parses a RIGHT instruction" do
+    parser.validate "RIGHT"
+    instruction = parser.load_instruction
+    expect(instruction.is_a?(Instruction::Right)).to be true
+  end    
 
-  # it "parses a REPORT instruction" do
-  #   instruction = parser.parse "REPORT"
-  #   expect(instruction).to eq({instruction: :report})
-  # end
+  it "parses a REPORT instruction" do
+    pending
+  end
 
   it "validates a PLACE command" do
     valid = parser.validate "PLACE 1,2,EAST"

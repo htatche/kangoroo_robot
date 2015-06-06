@@ -1,3 +1,9 @@
+require_relative "./instruction"
+require_relative "./instructions/place"
+require_relative "./instructions/move"
+require_relative "./instructions/left"
+require_relative "./instructions/right"
+
 class Parser
 
   attr_accessor :regexp, :matches
@@ -27,13 +33,13 @@ class Parser
   def load_instruction
     case @matches[:command]
       when "MOVE"
-        {instruction: :move}
+        Instruction::Move.new
       when "LEFT"
-        {instruction: :left}
+        Instruction::Left.new
       when "RIGHT"
-        {instruction: :right}
+        Instruction::Right.new
       when "REPORT"
-        {instruction: :report}
+        # Instruction::Report.new
       when /PLACE.*/
         Instruction::Place.new(@matches[:x], @matches[:y], @matches[:direction])
     end    
