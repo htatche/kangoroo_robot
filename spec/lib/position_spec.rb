@@ -5,10 +5,6 @@ describe "Position" do
 
   let(:position) { Position.new(1,2) }
 
-  it "needs two coordinates" do
-    expect{Position.new}.to raise_error(ArgumentError)
-  end    
-
   it "has x coordinate" do
     expect(position.x).to eq(1)
   end    
@@ -22,7 +18,15 @@ describe "Position" do
   end 
 
   it "gives the next position" do
-    pending
+    table = Table.new(5,5)
+    direction = Direction.new
+    position = Position.new
+    place = Instruction::Place.new(0,0,"EAST")
+
+    place.execute(position, direction, table)
+    next_position = position.next(direction)
+
+    expect(next_position).to eq({x: 1, y: 0})
   end
  
 end

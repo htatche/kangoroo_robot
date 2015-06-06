@@ -12,11 +12,12 @@ describe "Place" do
     expect(place.x).to eq(3)
   end
 
-  it "knows if a position is off the limits of a table" do
-    table = Table.new(1,1)
+  # Needs to move to instruction_spec 
+  # it "knows if a position is off the limits of a table" do
+  #   table = Table.new(1,1)
 
-    expect(place.is_off_limits?(table)).to be true
-  end   
+  #   expect(place.is_off_limits?(table)).to be true
+  # end   
 
   it "executes the instruction" do
     expect(place.execute(position, direction, table)).to be true

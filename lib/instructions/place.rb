@@ -2,24 +2,20 @@ require "instruction"
 
 class Instruction::Place < Instruction 
 
-  attr_accessor :x, :y, :direction
+  attr_accessor :x, :y, :cardinal_point
 
-  def initialize(x, y, direction)
+  def initialize(x, y, cardinal_point)
     @x = x
     @y = y
-    @direction = direction
-  end
-
-  def is_off_limits?(table)
-    x > table.xlimit || y > table.ylimit
+    @cardinal_point = cardinal_point
   end
 
   def execute(position, direction, table)
-    return false if is_off_limits?(table)
+    return false if is_off_limits?(x, y, table)
 
     position.x = x
     position.y = y 
-    direction.cardinal_point = direction
+    direction.cardinal_point = cardinal_point
 
     true
   end
