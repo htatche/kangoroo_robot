@@ -11,7 +11,10 @@ class Instruction::Place < Instruction
   end
 
   def execute(position, direction, table)
-    return false if is_off_limits?(x, y, table)
+    if is_off_limits?(x, y, table)
+      puts "The limits of this table are #{table.xlimit}x#{table.ylimit}"
+      return false 
+    end
 
     position.set(x,y)
     direction.cardinal_point = cardinal_point

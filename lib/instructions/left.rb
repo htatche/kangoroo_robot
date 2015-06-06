@@ -19,11 +19,7 @@ class Instruction::Left < Instruction
   end
 
   def execute(position, direction, table)
-
-    if !position.settled
-      # Reporter::say(:is_not_placed)
-      return false
-    end
+    return false if !position.settled
 
     direction.cardinal_point = rotate(direction)
   end

@@ -7,11 +7,11 @@ class Instruction::Report < Instruction
 
   def execute(position, direction, table)
     if !position.settled
-      puts "I am not on the map !"
+      puts "I am not on the map, PLACE me first"
       return false
     end
 
-    puts "My current position is x: #{position.x}, y: #{position.y}, and I am heading #{direction.cardinal_point}"
+    puts "#{position.x},#{position.y},#{direction.cardinal_point}"
   end
 
 end

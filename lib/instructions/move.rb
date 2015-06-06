@@ -7,17 +7,11 @@ class Instruction::Move < Instruction
 
   def execute(position, direction, table)
 
-    if !position.settled
-      # Reporter::say(:is_not_placed)
-      return false
-    end
+    return false unless position.settled
 
     next_position = position.next(direction)
 
-    if is_off_limits?(next_position[:x], next_position[:y], table)
-      # Reporter::say(:off_the_limits)
-      return false
-    end
+    return false if is_off_limits?(next_position[:x], next_position[:y], table)
 
     position.set(next_position[:x], next_position[:y])
 

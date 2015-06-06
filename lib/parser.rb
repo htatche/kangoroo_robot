@@ -12,8 +12,8 @@ class Parser
   def initialize
     @regexp = %r{ ^(?<command>MOVE|LEFT|RIGHT|REPORT|
                   (PLACE\s+
-                  (?<x>\d),
-                  (?<y>\d),
+                  (?<x>\d+),
+                  (?<y>\d+),
                   (?<direction>NORTH|EAST|SOUTH|WEST)))
               }x
 
