@@ -1,18 +1,27 @@
 class Position
 
-  attr_accessor :x, :y
+  attr_reader :x, :y
+  attr_accessor :settled
 
-  def initialize(x=0, y=0)
-    @x = x
-    @y = y
+  def initialize
+  end
+
+  def set(x, y)
+    @x, @y = x, y
+
+    @settled = true
   end
 
   def now 
-    [x,y]
+    return false unless @settled
+
+    {x: x, y: y}
   end
 
   # Next position according to current direction
   def next(direction)
+    return false unless @settled
+    
     case direction.cardinal_point
       when "NORTH"     
         {x: x,   y: y+1}

@@ -13,8 +13,7 @@ class Instruction::Place < Instruction
   def execute(position, direction, table)
     return false if is_off_limits?(x, y, table)
 
-    position.x = x
-    position.y = y 
+    position.set(x,y)
     direction.cardinal_point = cardinal_point
 
     true
