@@ -1,6 +1,10 @@
 # coding: utf-8
+spec = File.expand_path('../spec', __FILE__)
+$LOAD_PATH.unshift(spec) unless $LOAD_PATH.include?(spec)
+
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+
 require 'kangoroo_robot/version'
 
 Gem::Specification.new do |spec|
@@ -14,7 +18,9 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://github.com/htatche/kangoroo_robot"
   spec.license       = "MIT"
 
-  spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
+  spec.files         = Dir["{lib}/**/*.rb", "bin/*", "{spec}/**/*.rb" "LICENSE", "*.md"]
+  spec.test_files    = Dir["{spec}/**/*.rb"]
+
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
