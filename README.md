@@ -50,7 +50,7 @@ Run `bin/kangoroo_robot` and you will be presented with a command prompt.
 
 Kangoroo robot can receive different options to freely move around on a 5x5 table.
 
-1. PLACE
+* PLACE
 
 This is the first command and it is mandatory to run it before giving any other instruction,
 it will place the robot on the table with the coordinates and direction that we give it.
@@ -67,7 +67,7 @@ PLACE 3,5,EAST
 PLACE 3,0,SOUTH
 ```
 
-2. MOVE
+* MOVE
 
 Once the robot has been placed on the map, it is free to move around. With move, the robot
 will go one step further in the direction he is aiming to.
@@ -76,7 +76,7 @@ will go one step further in the direction he is aiming to.
 MOVE
 ```
 
-3. LEFT
+* LEFT
 
 We can rotate the robot 90 degrees to the left so he points to a different cardinal point. This
 way if he was pointing NORTH he will then aim to WEST
@@ -85,7 +85,7 @@ way if he was pointing NORTH he will then aim to WEST
 LEFT
 ```
 
-4. RIGHT
+* RIGHT
 
 We can rotate the robot 90 degrees to the right so he points to a different cardinal point. This
 way if he was pointing NORTH he will then aim to EAST
@@ -94,7 +94,7 @@ way if he was pointing NORTH he will then aim to EAST
 LEFT
 ```
 
-5. REPORT
+* REPORT
 
 The robot will inform you of his current position and direction.
 
