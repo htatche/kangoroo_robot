@@ -8,7 +8,7 @@ module KangorooRobot
                     (PLACE\s+
                     (?<x>\d+),
                     (?<y>\d+),
-                    (?<direction>NORTH|EAST|SOUTH|WEST)))
+                    (?<direction>NORTH|EAST|SOUTH|WEST)))$
                 }x
 
       @matches = matches

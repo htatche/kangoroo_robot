@@ -1,5 +1,6 @@
 module KangorooRobot
   class Robot
+    attr_reader :table
 
     def initialize
       @table      = Table.new(5,5)
