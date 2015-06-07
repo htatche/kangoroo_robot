@@ -5,6 +5,7 @@ module KangorooRobot
     attr_accessor :settled
 
     def initialize
+      @settled = false
     end
 
     def set(x, y)

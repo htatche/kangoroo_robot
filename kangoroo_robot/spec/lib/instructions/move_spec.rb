@@ -8,7 +8,7 @@ module KangorooRobot
     let(:direction) { Direction.new }
     let(:move) { Instruction::Move.new } 
 
-    context "edge cases" do
+    context "when edge cases" do
 
       it "does not execute instruction if robot will go off limits" do
         place = Instruction::Place.new(5,5,"NORTH")
@@ -33,7 +33,7 @@ module KangorooRobot
 
     end
 
-    context "when moving" do
+    context "when executing instruction" do
 
       it "goes north" do
         place = Instruction::Place.new(0,0,"NORTH")

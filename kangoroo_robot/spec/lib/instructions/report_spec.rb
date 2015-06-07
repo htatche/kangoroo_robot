@@ -8,9 +8,14 @@ module KangorooRobot
     let(:direction) { Direction.new("EAST") }
     let(:report) { Instruction::Report.new }  
 
-    it "does not execute the instruction if robot is not on the map" do
-      expect(report.execute(position, direction, table)).to be false
-    end    
-   
+    describe "#execute" do
+
+       context "when robot is not placed" do
+        it "ignores command" do
+          expect(report.execute(position, direction, table)).to be false
+        end           
+      end
+
+    end
   end
 end

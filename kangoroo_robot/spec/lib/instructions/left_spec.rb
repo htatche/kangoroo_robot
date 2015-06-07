@@ -8,7 +8,7 @@ module KangorooRobot
     let(:direction) { Direction.new }
     let(:left) { Instruction::Left.new } 
 
-    context "rotation" do
+    describe "#execute" do
 
       it "executes the instruction" do
         place = Instruction::Place.new(2,2,"NORTH")
@@ -27,7 +27,7 @@ module KangorooRobot
 
     end
 
-    context "rotation" do
+    describe "#rotate" do
 
       it "rotates 90 degrees to left from NORTH" do
         place = Instruction::Place.new(2,2,"NORTH")

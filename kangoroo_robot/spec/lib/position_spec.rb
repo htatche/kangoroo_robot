@@ -1,11 +1,11 @@
 require "position"
 
-  module KangorooRobot
+module KangorooRobot
   describe "Position" do
 
     let(:position) { Position.new }
 
-    context "After setting the position" do
+    context "when setting the position" do
 
       it "has x coordinate" do
         position.set(1,2)
@@ -27,7 +27,11 @@ require "position"
         expect(position.now).to eq({x: 1, y: 2})
       end 
 
-      it "gives the next position" do
+    end
+
+    describe "#next" do
+
+      it "gives the next position before moving" do
         table = Table.new(5,5)
         direction = Direction.new
         position = Position.new
@@ -40,6 +44,31 @@ require "position"
       end
       
     end
-   
+
+    describe "#now" do
+
+      it "gives the current position" do
+        table = Table.new(5,5)
+        direction = Direction.new
+        position = Position.new
+        place = Instruction::Place.new(0,0,"EAST")
+
+        place.execute(position, direction, table)
+        next_position = position.next(direction)
+
+        expect(next_position).to eq({x: 1, y: 0})
+      end
+      
+      it "does not give position if robot is not placed" do
+        table = Table.new(5,5)
+        position = Position.new
+
+        current_position = position.now
+
+        expect(current_position).to be false
+      end
+
+    end
+      
   end
 end

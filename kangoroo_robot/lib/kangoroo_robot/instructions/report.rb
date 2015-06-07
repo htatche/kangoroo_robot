@@ -11,6 +11,8 @@ module KangorooRobot
       end
 
       puts "#{position.x},#{position.y},#{direction.cardinal_point}"
+
+      return true      
     end
 
   end
