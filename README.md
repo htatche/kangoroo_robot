@@ -42,6 +42,10 @@ Or install it yourself as:
 
     $ gem install kangoroo_robot
 
+Or clone it from Github
+
+    $ git clone https://github.com/htatche/kangoroo_robot    
+
 ## Usage
 
 Run `bin/kangoroo_robot` and you will be presented with a command prompt.
@@ -112,6 +116,15 @@ REPORT
 MOVE
 REPORT
 0,2,WEST
+```
+
+## Testing
+
+Clone the repo and run rspec
+
+```
+git clone https://github.com/htatche/kangoroo_robot
+rspec
 ```
 
 ## Development

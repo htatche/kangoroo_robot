@@ -44,7 +44,7 @@ RSpec.configure do |config|
   end
 
   # Avoid printing 'put' messages in STDOUT when testing
-  # config.before { allow($stdout).to receive(:puts) }
+  config.before { allow($stdout).to receive(:puts) }
 
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.
