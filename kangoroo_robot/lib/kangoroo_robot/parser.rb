@@ -1,49 +1,44 @@
-require_relative "./instruction"
-require_relative "./instructions/place"
-require_relative "./instructions/move"
-require_relative "./instructions/left"
-require_relative "./instructions/right"
-require_relative "./instructions/report"
+module KangorooRobot
+  class Parser
 
-class Parser
+    attr_accessor :regexp, :matches
 
-  attr_accessor :regexp, :matches
+    def initialize
+      @regexp = %r{ ^(?<command>MOVE|LEFT|RIGHT|REPORT|
+                    (PLACE\s+
+                    (?<x>\d+),
+                    (?<y>\d+),
+                    (?<direction>NORTH|EAST|SOUTH|WEST)))
+                }x
 
-  def initialize
-    @regexp = %r{ ^(?<command>MOVE|LEFT|RIGHT|REPORT|
-                  (PLACE\s+
-                  (?<x>\d+),
-                  (?<y>\d+),
-                  (?<direction>NORTH|EAST|SOUTH|WEST)))
-              }x
+      @matches = matches
+    end  
 
-    @matches = matches
-  end  
+    def validate(str)
+      if @matches = str.match(regexp)
+        true
+      else
+        puts "Sorry I didn't understand your command"
+        puts "Refer to the README for available commands"      
 
-  def validate(str)
-    if @matches = str.match(regexp)
-      true
-    else
-      puts "Sorry I didn't understand your command"
-      puts "Refer to the README for available commands"      
-
-      false
+        false
+      end
     end
-  end
 
-  def load_instruction
-    case @matches[:command]
-      when "MOVE"
-        Instruction::Move.new
-      when "LEFT"
-        Instruction::Left.new
-      when "RIGHT"
-        Instruction::Right.new
-      when "REPORT"
-        Instruction::Report.new
-      when /PLACE.*/
-        Instruction::Place.new(@matches[:x], @matches[:y], @matches[:direction])
-    end    
-  end
+    def load_instruction
+      case @matches[:command]
+        when "MOVE"
+          Instruction::Move.new
+        when "LEFT"
+          Instruction::Left.new
+        when "RIGHT"
+          Instruction::Right.new
+        when "REPORT"
+          Instruction::Report.new
+        when /PLACE.*/
+          Instruction::Place.new(@matches[:x], @matches[:y], @matches[:direction])
+      end    
+    end
 
+  end
 end

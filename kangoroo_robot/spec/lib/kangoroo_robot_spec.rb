@@ -1,8 +1,10 @@
-require 'spec_helper'
+# require 'spec_helper'
 
-describe KangorooRobot do
-  it 'has a version number' do
-    expect(KangorooRobot::VERSION).not_to be nil
+module KangorooRobot
+  describe KangorooRobot do
+    it 'has a version number' do
+      expect(KangorooRobot::VERSION).not_to be nil
+    end
+
   end
-
 end

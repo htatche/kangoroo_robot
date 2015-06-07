@@ -1,17 +1,17 @@
-require_relative "../instruction"
+module KangorooRobot
+  class Instruction::Report < Instruction 
 
-class Instruction::Report < Instruction 
-
-  def initialize
-  end
-
-  def execute(position, direction, table)
-    if !position.settled
-      puts "I am not on the map, PLACE me first"
-      return false
+    def initialize
     end
 
-    puts "#{position.x},#{position.y},#{direction.cardinal_point}"
-  end
+    def execute(position, direction, table)
+      if !position.settled
+        puts "I am not on the map, PLACE me first"
+        return false
+      end
 
+      puts "#{position.x},#{position.y},#{direction.cardinal_point}"
+    end
+
+  end
 end

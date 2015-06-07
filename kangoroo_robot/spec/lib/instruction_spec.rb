@@ -1,13 +1,15 @@
-require "spec_helper"
-# require "instruction"
+require "instruction"
+require "table"
 
-describe "Instruction" do
+module KangorooRobot
+  describe "Instruction" do
 
-  let(:instruction) { Instruction.new }
-  let(:table) { Table.new(5,5) }
+    let(:instruction) { Instruction.new }
+    let(:table) { Table.new(5,5) }
 
-  it "knows if a position is off the limits of a table" do
-    expect(instruction.is_off_limits?(10,20, table)).to be true
-  end   
+    it "knows if a position is off the limits of a table" do
+      expect(instruction.is_off_limits?(10,20, table)).to be true
+    end   
 
+  end
 end
